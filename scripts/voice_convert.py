@@ -17,6 +17,6 @@ out = call(parselmouth.Sound(tmp), "Change gender", 75, 600, formant, pitch, rng
 raw = dst + ".raw.wav"
 out.save(raw, "WAV")
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw,
-                "-af", "highpass=f=100,equalizer=f=3500:t=q:w=1:g=2,loudnorm=I=-16", dst], check=True)
+                "-af", "highpass=f=100,equalizer=f=3500:t=q:w=1:g=2,loudnorm=I=-16", "-ar", "48000", dst], check=True)
 os.remove(raw)
 print("saved", dst)
